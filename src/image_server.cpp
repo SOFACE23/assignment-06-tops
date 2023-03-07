@@ -15,9 +15,24 @@
 
 using boost::asio::ip::tcp;
 
+
 std::vector<uint8_t> get_image()
 {
-  return std::vector<uint8_t>();
+
+    // open the file:
+    std::streampos fileSize;
+    std::ifstream file("cat.jpg", std::ios::binary);
+
+    // get its size:
+    file.seekg(0, std::ios::end);
+    fileSize = file.tellg();
+    file.seekg(0, std::ios::beg);
+
+    // read the data:
+    std::vector<uint8_t> fileData(fileSize);    // Her opretter vi en vektor med samme størrelse som vores image
+    file.read((char*) &fileData[0], fileSize);  // Her sætter vi vores image bytes ind i vektoren, også retunerer den 
+    
+  return fileData;
 }
 
 int main()
