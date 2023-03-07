@@ -14,11 +14,17 @@
 
 using boost::asio::ip::tcp;
 
-constexpr size_t image_size = 100*100;
+constexpr size_t image_size = 17618;
 
 void save_image(char* data, size_t len)
 {
-  // TODO
+std::ofstream file ("cat2.jpg"); // Vi opretter en fil "cat2" og ved brug af for loop sender vii data arrayet ind til filen
+
+for(size_t i = 0; i<len, i++)  
+{
+  file << data[i]; 
+}
+
 }
 
 int main(int argc, char* argv[])
